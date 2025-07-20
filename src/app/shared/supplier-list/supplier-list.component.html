@@ -1,0 +1,21 @@
+<div class="supplier-list">
+  <div class="supplier-card" *ngFor="let s of suppliers">
+    <div class="supplier-main">
+      <div class="score-badge" [ngClass]="{
+        'score-good': s.score >= 80,
+        'score-medium': s.score >= 60 && s.score < 80,
+        'score-bad': s.score < 60
+      }">
+        {{ s.score }}<span class="score-symbol">%</span>
+      </div>
+      <div>
+        <strong class="supplier-name">{{ s.nome }}</strong>
+        <div class="data">Última avaliação: {{ s.ultimaAvaliacao | date:'yyyy-MM-dd' }}</div>
+      </div>
+    </div>
+    <div class="supplier-actions">
+      <button class="btn-review" routerLink="/evaluation">Avaliação</button>
+      <button class="btn-delete">Excluir</button>
+    </div>
+  </div>
+</div>

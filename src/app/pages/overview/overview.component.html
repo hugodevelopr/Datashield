@@ -1,0 +1,6 @@
+<div class="dashboard-overview">
+    <app-dashboard-cards></app-dashboard-cards>
+    <app-dashboard-tabs [activeTab]="activeTab" (tabChange)="activeTab=$event"> </app-dashboard-tabs>
+    <app-supplier-search (search)="onSearch($event)"></app-supplier-search>
+    <app-supplier-list [suppliers]="filteredSuppliers"> </app-supplier-list>
+</div>

@@ -1,0 +1,106 @@
+.ropa-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.ropa-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0;
+  }
+  .ropa-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    .ropa-search {
+      background: var(--surface);
+      border: 1.5px solid var(--surface-alt);
+      color: var(--text-primary);
+      border-radius: 9px;
+      font-size: 1rem;
+      padding: 8px 14px;
+      margin-right: 10px;
+      width: 270px;
+      transition: border 0.15s;
+    }
+    .ropa-search:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+  }
+}
+
+.ropa-table-card {
+  padding: 0;
+  overflow-x: auto;
+}
+
+.ropa-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+}
+
+.ropa-table th, .ropa-table td {
+  padding: 13px 15px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.ropa-table th {
+  background: var(--surface-alt);
+  color: var(--primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--surface-light);
+}
+
+.ropa-table tbody tr {
+  border-radius: var(--border-radius);
+  background: var(--bg-card);
+  transition: background 0.13s;
+}
+
+.ropa-table tbody tr:hover {
+  background: var(--surface-light);
+}
+
+.ropa-table td {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--surface-alt);
+  vertical-align: middle;
+}
+
+.badge {
+  padding: 3px 13px;
+  border-radius: 13px;
+  font-size: 0.95em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  &.badge-success {
+    background: var(--success);
+    color: #fff;
+  }
+  &.badge-inactive {
+    background: var(--surface-light);
+    color: var(--text-muted);
+  }
+}
+
+.btn.btn-mini {
+  padding: 6px 12px;
+  font-size: 0.98rem;
+}
+
+.no-data {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 22px 0;
+}

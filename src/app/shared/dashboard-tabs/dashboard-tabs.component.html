@@ -1,0 +1,9 @@
+<div class="dashboard-tabs">
+  <div
+    class="tab"
+    *ngFor="let tab of ['Ativas', 'Em Revisão', 'Concluídas']; let i = index"
+    [class.active]="activeTab === i"
+    (click)="selectTab(i)">
+    {{ tab }}
+  </div>
+</div>

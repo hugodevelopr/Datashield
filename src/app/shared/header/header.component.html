@@ -1,0 +1,14 @@
+<header class="main-header">
+    <div class="header-left">
+        <span class="header-title">{{ title }}</span>
+    </div>
+    <div class="header-right">
+        <div class="header-actions">
+            <button class="mode-switch" (click)="toggleTheme()"
+                [attr.aria-label]="isDark ? 'Modo claro' : 'Modo escuro'">
+                <i class="fas" [ngClass]="isDark ? 'fa-sun' : 'fa-moon'"></i>
+            </button>
+        </div>
+        <button class="main-action-btn" (click)="supplierCreate()"><i class="fas fa-plus"></i> Adicionar Fornecedor</button>
+    </div>
+</header>

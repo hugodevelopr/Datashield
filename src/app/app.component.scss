@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Garante que o main-content ocupe toda área disponível */
+.main-content {
+  grid-column: 2;
+  grid-row: 2;
+  background: var(--surface);
+  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
+  min-height: 0;
+  overflow-y: auto;
+}

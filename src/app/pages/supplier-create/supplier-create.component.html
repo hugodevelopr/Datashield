@@ -1,0 +1,68 @@
+<div class="supplier-create-container">
+  <div class="supplier-header">
+    <button class="btn btn-secondary" (click)="voltar()">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1>Cadastrar Fornecedor</h1>
+  </div>
+
+  <form [formGroup]="supplierForm" (ngSubmit)="onSubmit()" class="supplier-form card">
+    <div class="form-row">
+      <div class="form-field">
+        <label>Nome do Fornecedor <span class="required">*</span></label>
+        <input formControlName="nome" type="text"
+          [class.invalid]="f['nome'].invalid && (f['nome'].touched || f['nome'].dirty)"
+          placeholder="Ex: ABC Soluções"/>
+        <div *ngIf="f['nome'].invalid && (f['nome'].touched || f['nome'].dirty)" class="form-error">
+          Nome obrigatório.
+        </div>
+      </div>
+      <div class="form-field">
+        <label>CNPJ <span class="required">*</span></label>
+        <input formControlName="cnpj" type="text"
+          placeholder="00.000.000/0000-00"
+          [class.invalid]="f['cnpj'].invalid && (f['cnpj'].touched || f['cnpj'].dirty)"/>
+        <div *ngIf="f['cnpj'].invalid && (f['cnpj'].touched || f['cnpj'].dirty)" class="form-error">
+          CNPJ inválido.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Email <span class="required">*</span></label>
+        <input formControlName="email" type="email"
+          placeholder="contato@fornecedor.com"
+          [class.invalid]="f['email'].invalid && (f['email'].touched || f['email'].dirty)"/>
+        <div *ngIf="f['email'].invalid && (f['email'].touched || f['email'].dirty)" class="form-error">
+          Email inválido.
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Responsável <span class="required">*</span></label>
+        <input formControlName="responsavel" type="text"
+          placeholder="Nome do responsável"
+          [class.invalid]="f['responsavel'].invalid && (f['responsavel'].touched || f['responsavel'].dirty)"/>
+        <div *ngIf="f['responsavel'].invalid && (f['responsavel'].touched || f['responsavel'].dirty)" class="form-error">
+          Responsável obrigatório.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Telefone</label>
+        <input formControlName="telefone" type="text" placeholder="(00) 00000-0000"/>
+      </div>
+      <div class="form-field">
+        <label>Observações</label>
+        <input formControlName="observacao" type="text" placeholder="Opcional"/>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="isSaving || saved">
+        <span *ngIf="!isSaving && !saved"><i class="fas fa-save"></i>&nbsp;Salvar</span>
+        <span *ngIf="isSaving"><i class="fas fa-spinner fa-spin"></i>&nbsp;Salvando...</span>
+        <span *ngIf="saved"><i class="fas fa-check"></i>&nbsp;Salvo!</span>
+      </button>
+    </div>
+  </form>
+</div>

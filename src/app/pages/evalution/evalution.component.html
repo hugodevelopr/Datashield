@@ -1,0 +1,43 @@
+<div class="evaluation-wizard">
+  <!-- Header e progresso -->
+  <div class="wizard-header card">
+    <div>
+      <strong>Fornecedor A</strong>
+      <div class="step-breadcrumbs">
+        <ng-container *ngFor="let step of steps; let i = index">
+          <span [class.active]="i === currentStep">{{step.name}}</span>
+          <span *ngIf="i < steps.length - 1">›</span>
+        </ng-container>
+      </div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width]="progressPercent + '%'"></div>
+      </div>
+      <span class="progress-text">{{progressPercent}}%</span>
+    </div>
+  </div>
+
+  <!-- Perguntas do passo atual -->
+  <form (ngSubmit)="submit()" class="wizard-form card">
+    <div class="step-questions">
+      <div *ngFor="let q of steps[currentStep].questions" class="question-block">
+        <label class="question-title">{{q.text}}</label>
+        <div class="question-options">
+          <label *ngFor="let opt of q.options">
+            <input type="radio" [name]="'q' + q.id" [value]="opt" [(ngModel)]="q.answer" required>
+            <span>{{opt}}</span>
+          </label>
+        </div>
+        <input type="text" class="question-comment" [(ngModel)]="q.comment" [name]="'c' + q.id" placeholder="Comentário opcional..." />
+      </div>
+    </div>
+    <!-- Navegação -->
+    <div class="wizard-actions">
+      <button type="button" class="btn btn-secondary" (click)="saveDraft()">Salvar rascunho</button>
+      <button type="button" class="btn btn-secondary" (click)="prevStep()" [disabled]="currentStep===0">Anterior</button>
+      <button *ngIf="currentStep < steps.length-1" type="button" class="btn btn-primary" (click)="nextStep()">Próxima</button>
+      <button *ngIf="currentStep === steps.length-1" type="submit" class="btn btn-primary">Finalizar Avaliação</button>
+    </div>
+  </form>
+</div>

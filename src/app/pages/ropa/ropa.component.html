@@ -1,0 +1,58 @@
+<div class="ropa-container">
+  <div class="ropa-header">
+    <h1>ROPA</h1>
+    <div class="ropa-actions">
+      <input type="text" class="ropa-search" [(ngModel)]="search" placeholder="Buscar operação, controlador ou operador...">
+      <button class="btn btn-secondary" (click)="exportar()">
+        <i class="fas fa-file-export"></i>&nbsp;Exportar
+      </button>
+      <button class="btn btn-primary" (click)="adicionarROPA()">
+        <i class="fas fa-plus"></i>&nbsp;Adicionar ROPA
+      </button>
+    </div>
+  </div>
+
+  <div class="ropa-table-card card">
+    <table class="ropa-table">
+      <thead>
+        <tr>
+          <th>Atividade</th>
+          <th>Controlador</th>
+          <th>Operador</th>
+          <th>Categoria dos Dados</th>
+          <th>Finalidade</th>
+          <th>Status</th>
+          <th>Criação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reg of registrosFiltrados">
+          <td>{{reg.atividade}}</td>
+          <td>{{reg.controlador}}</td>
+          <td>{{reg.operador}}</td>
+          <td>{{reg.categoriaDados}}</td>
+          <td>{{reg.finalidade}}</td>
+          <td>
+            <span class="badge"
+              [ngClass]="{
+                'badge-success': reg.status==='Ativo',
+                'badge-inactive': reg.status!=='Ativo'
+              }">
+              {{reg.status}}
+            </span>
+          </td>
+          <td>{{reg.dataCriacao | date:'dd/MM/yyyy'}}</td>
+          <td>
+            <button class="btn btn-secondary btn-mini" (click)="visualizar(reg)">
+              <i class="fas fa-eye"></i>
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="registrosFiltrados.length===0">
+          <td colspan="8" class="no-data">Nenhum registro encontrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
